@@ -28,7 +28,7 @@ pub type HookFn = extern "C" fn(
 ) -> InterceptResult;
 
 /// The return value of hook function.
-#[repr(usize)]
+#[repr(i32)]
 pub enum InterceptResult {
     /// The user takes over the system call.
     Hook = 0,
