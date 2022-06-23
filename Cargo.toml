@@ -2,6 +2,14 @@
 name = "syscall-intercept"
 version = "0.1.0"
 edition = "2021"
+authors = ["Runji Wang <wangrunji0408@163.com>"]
+description = "Userspace syscall intercepting library."
+readme = "README.md"
+homepage = "https://github.com/madsys-dev/syscall-intercept-rs"
+repository = "https://github.com/madsys-dev/syscall-intercept-rs"
+license = "MIT"
+keywords = ["syscall", "interception"]
+categories = ["api-bindings"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

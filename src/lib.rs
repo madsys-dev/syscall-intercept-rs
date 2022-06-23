@@ -2,7 +2,7 @@
 extern "C" {
     static mut intercept_hook_point: Option<HookFn>;
 
-    // fn syscall_no_intercept(syscall_number: i32, ...) -> i32;
+    pub fn syscall_no_intercept(num: isize, ...) -> i32;
 }
 
 /// Set syscall intercept hook function.
