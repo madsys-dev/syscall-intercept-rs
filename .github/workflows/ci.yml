@@ -30,7 +30,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: -- -D warnings
+          args: --all-targets -- -D warnings
 
   build:
     runs-on: ubuntu-latest
@@ -48,6 +48,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
+          args: --all-targets
       - name: Doc
         uses: actions-rs/cargo@v1
         with:
