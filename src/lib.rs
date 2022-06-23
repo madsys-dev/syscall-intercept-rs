@@ -2,17 +2,25 @@
 extern "C" {
     static mut intercept_hook_point: Option<HookFn>;
 
-    pub fn syscall_no_intercept(num: isize, ...) -> i32;
+    pub fn syscall_no_intercept(num: isize, ...) -> isize;
 }
 
 /// Set syscall intercept hook function.
-pub fn set_hook_fn(f: HookFn) {
-    unsafe { intercept_hook_point = Some(f) };
+///
+/// # Safety
+///
+/// This function will change all syscall behavior!
+pub unsafe fn set_hook_fn(f: HookFn) {
+    intercept_hook_point = Some(f);
 }
 
 /// Clear syscall intercept hook function.
-pub fn unset_hook_fn() {
-    unsafe { intercept_hook_point = None };
+///
+/// # Safety
+///
+/// This function will change all syscall behavior!
+pub unsafe fn unset_hook_fn() {
+    intercept_hook_point = None;
 }
 
 /// The type of hook function.
@@ -30,7 +38,7 @@ pub type HookFn = extern "C" fn(
 /// The return value of hook function.
 #[repr(i32)]
 pub enum InterceptResult {
-    /// The user takes over the system call.
+    /// The user takes over the system call. The return value should be set via `result`.
     Hook = 0,
     /// The specific system call was ignored by the user and the original syscall should be executed.
     Forward = 1,

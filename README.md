@@ -41,8 +41,8 @@ extern "C" fn hook(
 Enable or disable interception:
 
 ```rust
-set_hook_fn(hook);
-unset_hook_fn();
+unsafe { set_hook_fn(hook) };
+unsafe { unset_hook_fn() };
 ```
 
 Issue syscall without being intercepted:
